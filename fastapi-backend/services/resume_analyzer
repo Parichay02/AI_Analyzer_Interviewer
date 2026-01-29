@@ -1,0 +1,13 @@
+def analyze_resume(text: str):
+    skills = []
+
+    keywords = ["python", "react", "sql", "fastapi", "ml"]
+
+    for k in keywords:
+        if k.lower() in text.lower():
+            skills.append(k)
+
+    return {
+        "matched_skills": skills,
+        "skill_count": len(skills)
+    }

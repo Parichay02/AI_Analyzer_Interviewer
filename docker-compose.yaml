@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: authdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: 14800121045
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  fastapi-backend:
+    build:
+      context: ./fastapi-backend
+    depends_on:
+      - node-backend  
+    container_name: fastapi-backend
+    ports:
+      - "8080:8080"
+    restart: always
+
+  node-backend:
+    build:
+      context: ./backend
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: appuser
+      DB_PASSWORD: 14800121045
+      DB_NAME: authdb  
+    container_name: node-backend
+    ports:
+      - "5000:5000"
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend-new
+    container_name: react-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - fastapi-backend
+      - node-backend
+
+
+volumes:
+  mysql_data:
