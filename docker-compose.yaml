@@ -19,9 +19,10 @@ services:
   fastapi-backend:
     build:
       context: ./fastapi-backend
-    depends_on:
-      - node-backend  
+    
     container_name: fastapi-backend
+    env_file:
+    - ./fastapi-backend/.env
     ports:
       - "8080:8080"
     restart: always

@@ -1,11 +1,15 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
+import os
+from dotenv import load_dotenv
 import json
 
+load_dotenv()
 llm = ChatOpenAI(
     model="gpt-4o-mini",
-    openai_api_key="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" ,
-    temperature=0
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
+   
+     temperature=0
 )
 
 prompt = ChatPromptTemplate.from_template("""

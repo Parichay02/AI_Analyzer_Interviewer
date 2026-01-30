@@ -106,7 +106,7 @@ app.post("/api/compare-resume-jd",  upload.single("resume"), async (req, res) =>
     formData.append("job_description", jdText);
    
        const response = await axios.post(
-      "http://127.0.0.1:8080/compare-resume-jd",
+      "http://fastapi-backend:8080/compare-resume-jd",
        formData,
       { headers: formData.getHeaders(),
         timeout: 20000 }
@@ -147,7 +147,7 @@ app.post("/api/interview", async (req, res) => {
     }
 
     const response = await axios.post(
-      "http://127.0.0.1:8080/interview",
+      "http://fastapi-backend:8080/interview",
       {
         answer,
         role
