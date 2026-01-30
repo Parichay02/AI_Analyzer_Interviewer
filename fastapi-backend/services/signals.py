@@ -7,9 +7,14 @@ import json
 load_dotenv()
 llm = ChatOpenAI(
     model="gpt-4o-mini",
+<<<<<<< HEAD
     openai_api_key=os.getenv("OPENAI_API_KEY"),
    
      temperature=0
+=======
+    openai_api_key="xxxx"
+    temperature=0
+>>>>>>> 7dd0bd9c41c559d06755c87b0987a889c36165ae
 )
 
 prompt = ChatPromptTemplate.from_template("""

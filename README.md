@@ -24,6 +24,7 @@
 - ❌ FastAPI ↔ Node API integration → standardized API datapoints
 
 ## How to Run Locally
+Edit the mysql passwords corresponding to your system and docker files likewise.
 ```bash
 docker compose up --build
 

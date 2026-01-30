@@ -9,7 +9,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: authdb
       MYSQL_USER: appuser
-      MYSQL_PASSWORD: 14800121045
+      MYSQL_PASSWORD: **********
     ports:
       - "3306:3306"
     volumes:
